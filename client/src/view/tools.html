@@ -1,0 +1,99 @@
+<div id="tools" class="text-center">
+    <div>
+        <div class="title">
+            <span>Create new Label</span>
+        </div>
+        <div class="add-label">
+            <div class="input-group ">
+                <input type="text"
+                    class="form-control"
+                    placeholder="Create label"
+                    ng-model="newLabel"
+                    aria-describedby="add-label">
+                    <span class="input-group-addon" id="add-label"
+                          ng-click="toolCtrl.createLabel(newLabel) ; newLabel = ''">
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </span>
+            </div>
+            <div class="list-label">
+                <span ng-repeat="label in toolCtrl.data.labels track by $index">
+                    {{label}}
+                    <i ng-click="toolCtrl.removeLabel('labels', label)" class="glyphicon glyphicon-remove pull-right"></i>
+                </span>
+                <span class="new-label" ng-repeat="nlabel in toolCtrl.data.newLabel track by $index">
+                    {{nlabel}}
+                    <i ng-click="toolCtrl.removeLabel('newLabel', nlabel)" class="glyphicon glyphicon-remove pull-right"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="new-category">
+        <div class="title">
+            <span>Create new Category</span>
+        </div>
+        <div class="add-category">
+            <div class="input-group">
+                <input type="text"
+                   class="form-control"
+                   placeholder="Create category parent"
+                   ng-model="newCategoryParent"
+                   aria-describedby="add-label">
+
+                <span class="input-group-addon" id="add-category"
+                   ng-click="toolCtrl.createCategoryParent(newCategoryParent) ; newCategoryParent = ''">
+                   <i class="glyphicon glyphicon-ok"></i>
+               </span>
+            </div>
+            <div class="list-category">
+                <span ng-class="{'select-category': toolCtrl.data.newNameCategoryParent == category.category_parent.name}"
+                      ng-click="toolCtrl.data.newNameCategoryParent = category.category_parent.name"
+                      ng-repeat="category in toolCtrl.data.categories track by $index">
+
+                    {{category.category_parent.name}}
+                    <i ng-click="toolCtrl.removeCategory('parent-category', category.category_parent.name)" class="glyphicon glyphicon-remove pull-right"></i>
+
+                </span>
+
+                <span class="new-label"
+                      ng-class="{'select-category-new': toolCtrl.data.newNameCategoryParent == category.category_parent.name}"
+                      ng-click="toolCtrl.data.newNameCategoryParent = category.category_parent.name"
+                      ng-repeat="category in toolCtrl.data.newCategoryList track by $index">
+
+                    {{category.category_parent.name}}
+                    <i ng-click="toolCtrl.removeCategory('parent-category', category.category_parent.name)" class="glyphicon glyphicon-remove pull-right"></i>
+                </span>
+            </div>
+
+            <div ng-show="toolCtrl.data.newNameCategoryParent" class="input-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Create category"
+                       ng-model="newCategory"
+                       aria-describedby="add-label">
+
+                <span class="input-group-addon"
+                      ng-click="toolCtrl.createCategory(newCategory) ; newCategory = ''">
+                   <i class="glyphicon glyphicon-ok"></i>
+               </span>
+            </div>
+            <div class="list-category">
+                <span ng-repeat="category in toolCtrl.getCategory(toolCtrl.data.categories) track by $index">
+                    {{category}}
+                    <i ng-click="toolCtrl.removeCategory('category', category)" class="glyphicon glyphicon-remove pull-right"></i>
+                </span>
+                <span class="new-label"
+                    ng-repeat="category in toolCtrl.getCategory(toolCtrl.data.newCategoryList) track by $index">
+                    {{category}}
+                    <i ng-click="toolCtrl.removeCategory('category', category)" class="glyphicon glyphicon-remove pull-right"></i>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="apply">
+        <button ng-click="toolCtrl.apply()">Apply12</button>
+    </div>
+</div>
+
+
+

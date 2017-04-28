@@ -1,0 +1,30 @@
+<div id="page-two">
+    <div class="title">
+        <h2>Category</h2>
+    </div>
+    <div class="parent">
+        <select ng-model="selectParent" ng-click="addCategory('parent', selectParent)">
+            <option value="" disabled>Select parent category</option>
+            <option ng-repeat="category in data.categories">
+                {{category.category_parent.name}}
+            </option>
+        </select>
+        <div ng-if="selectCategory.name" class="parent-name">
+            <span ng-bind="selectCategory.name"></span>
+            <i class="glyphicon glyphicon-remove" ng-click="remove('name')"></i>
+
+            <div class="category">
+                <select ng-model="select" ng-click="addCategory('category', select)">
+                    <option value="" disabled>Select category</option>
+                    <option ng-repeat="category in getCategory()">
+                        {{category}}
+                    </option>
+                </select>
+            </div>
+            <div ng-repeat="item in selectCategory.category track by $index">
+                <span ng-bind="item"></span>
+                <i class="glyphicon glyphicon-remove" ng-click="remove('category', item)"></i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div id="page-four">
+    <div class="title">
+        <h2>Color</h2>
+    </div>
+    <div class="list-color text-center">
+        <div ng-style="{background:color}"
+             ng-class="{'active':selectColor == color , 'notactive':selectColor != color }"
+             class="color-item"
+             ng-repeat="color in colors"
+             ng-click="setColor(color)"
+        >
+            <i ng-if="selectColor == color" class="glyphicon glyphicon-ok pull-right icon-ok"></i>
+        </div>
+    </div>
+</div>

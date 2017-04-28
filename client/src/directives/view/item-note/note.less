@@ -1,0 +1,41 @@
+@main-color-modal :  #696969;
+@brown-color      :  #8A4B08;
+@hover-remove-btn :  #DC143C;
+
+
+#note-item > div {
+  border: 1px solid #0f0f0f;
+  cursor: pointer;
+  margin-top: 15px;
+  word-wrap: break-word !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+
+  h3{
+    position: relative;
+    margin: 0;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: @main-color-modal;
+    color:white;
+
+    i{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: #fff;
+      font-size: 0.6em;
+    }
+    i:hover{
+      color: @hover-remove-btn;
+    }
+  }
+
+  .note-text{
+    word-wrap: break-word;
+    padding: 5px;
+    height: 250px;
+    color: @main-color-modal;
+    overflow: auto;
+  }
+}

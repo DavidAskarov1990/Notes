@@ -1,0 +1,14 @@
+<div id="notes">
+    <div class="col-xs-12 create-note">
+        <img class="pull-right"
+             ng-model="isCreate"
+             ng-click="isCreate = !isCreate"
+             src="src/style/image/add.png"
+             alt="create"
+        >
+        <create-note-directive ng-if="isCreate" data="notesCtrl.data" is-create="$parent.isCreate"></create-note-directive>
+    </div>
+    <div ng-repeat="note in notesCtrl.data.notes track by $index">
+        <note-directive note-data="note"></note-directive>
+    </div>
+</div>

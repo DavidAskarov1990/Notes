@@ -1,0 +1,20 @@
+{
+  "LABELS":["Attention", "Urgently", "Defer", "Dangers", "Not necessary", "Will wait"],
+
+  "CATEGORY":[
+    {
+      "category_parent":{
+        "name":"Home",
+        "category":["Homework", "Birthday", "Purchases", "Guests"]
+      }
+    },
+    {
+      "category_parent":{
+        "name":"Work",
+        "category":["Boss", "Birthday", "Customer", "Dependent", "Procurement"]
+      }
+    }
+  ],
+
+  "COLOR":["#FFFACD", "#C1FFC1", "#FFC1C1", "#FFEC8B"]
+}

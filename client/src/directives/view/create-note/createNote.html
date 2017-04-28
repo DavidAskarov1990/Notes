@@ -1,0 +1,22 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>New Note</h1>
+        </div>
+        <div class="modal-body">
+            <div ng-if="page == 1" ng-include="'src/directives/view/create-note/page/page1.html'"></div>
+            <div ng-if="page == 2" ng-include="'src/directives/view/create-note/page/page2.html'"></div>
+            <div ng-if="page == 3" ng-include="'src/directives/view/create-note/page/page3.html'"></div>
+            <div ng-if="page == 4" ng-include="'src/directives/view/create-note/page/page4.html'"></div>
+            <div ng-if="page == 5" ng-include="'src/directives/view/create-note/page/page-result.html'"></div>
+        </div>
+        <div class="modal-footer">
+            <div class="btn-block">
+                <button class="col-xs-12 col-sm-2" ng-click="dismiss()">CLOSE</button>
+                <button ng-if="page != 5" class="pull-right col-xs-12 col-sm-2" ng-click="next(1)">NEXT</button>
+                <button ng-if="page == 5" class="pull-right col-xs-12 col-sm-2" ng-click="addNote(1)">ADD</button>
+                <button ng-if="page > 1" class="pull-right col-xs-12 col-sm-2" ng-click="next(0)">PREVIOS</button>
+            </div>
+        </div>
+    </div>
+</div>

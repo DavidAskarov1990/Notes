@@ -1,0 +1,20 @@
+<div id="page-result">
+    <div class="title">
+        <h2>Add Note</h2>
+    </div>
+    <div class="note-body row">
+
+        <div class="col-xs-12 col-sm-7 note-text">
+            <h4>TEXT NOTE </h4>
+            <div ng-style="{background:selectColor}">
+                <span ng-bind="newNote.text"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 note-title">
+            <h4>TITLE NOTE </h4>
+            <p>
+                <input type="text" ng-model="newNote.title">
+            </p>
+        </div>
+    </div>
+</div>

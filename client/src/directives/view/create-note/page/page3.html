@@ -1,0 +1,19 @@
+<div id="page-three">
+    <div class="title">
+        <h2>Label</h2>
+    </div>
+    <div class="label">
+        <select ng-model="selectL" ng-click="addCategory('label', selectL)">
+            <option value="" disabled>Select label</option>
+            <option ng-repeat="label in data.labels">
+                {{label}}
+            </option>
+        </select>
+        <div class="label-list" ng-repeat="item in selectLabel track by $index">
+            <div>
+                <span ng-bind="item"></span>
+                <i class="glyphicon glyphicon-remove" ng-click="remove('label', item)"></i>
+            </div>
+        </div>
+    </div>
+</div>

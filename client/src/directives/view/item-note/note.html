@@ -1,0 +1,12 @@
+<div id="note-item"
+     class="col-xs-12 col-sm-4 col-md-3 text-center">
+    <div class="note-body">
+        <h3>
+            <span ng-bind="contraction('title', note.title)"></span>
+            <i class="glyphicon glyphicon-remove pull-right" ng-click="removeNote(note.id)"></i>
+        </h3>
+        <div class="note-text" ui-sref="noteView({note : note})" ng-style="{background:note.color}">
+            {{contraction('note', note.text)}}
+        </div>
+    </div>
+</div>

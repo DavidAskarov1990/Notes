@@ -1,0 +1,105 @@
+<div id="view">
+    <div class="container note-body" ng-style="{background:nv.note.color}">
+        <div ng-if="nv.isEdit" class="row text-right">
+            <span ng-repeat="color in nv.data.colors"
+                  ng-style="{background: color}"
+                  class="edit-color"
+                  ng-click="nv.note.color = color">
+            </span>
+        </div>
+
+        <div class="row title text-left">
+            <div ng-class="{'col-sm-12': nv.isEdit , 'col-sm-3': !nv.isEdit}"
+                 class="hidden-xs">
+                <h4>TITLE : </h4>
+            </div>
+            <div ng-class="{'col-sm-12': nv.isEdit, 'col-sm-9': !nv.isEdit}"
+                 class="col-xs-12">
+                <h3 ng-if="!nv.isEdit">{{nv.note.title}}</h3>
+                <input ng-if="nv.isEdit" type="text" ng-model="nv.note.title">
+            </div>
+        </div>
+
+        <div ng-if="!nv.isEdit && nv.note.categories.name" class="row category text-left">
+            <div class="col-xs-12 col-sm-3 hidden-xs ">
+                <h4>CATEGORY : </h4>
+            </div>
+            <div class="col-xs-12 col-sm-9">
+                <h4 class="category-name" ng-bind="nv.note.categories.name"></h4>
+                <div ng-repeat="category in nv.note.categories.category">
+                    <span ng-bind="category"></span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="!nv.isEdit && nv.note.labels.length > 0" class="row labels text-left">
+            <div class="col-xs-12 col-sm-3 hidden-xs ">
+                <h4>LABELS : </h4>
+            </div>
+            <div class="col-xs-12 col-sm-9 content-labels">
+                <div ng-repeat="label in nv.note.labels">
+                    <span ng-bind="label"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text text-left">
+            <div ng-class="{'col-sm-12': nv.isEdit , 'col-sm-3': !nv.isEdit}" class=" hidden-xs">
+                <h4>TEXT : </h4>
+            </div>
+            <div ng-class="{'col-sm-12': nv.isEdit , 'col-sm-9' : !nv.isEdit}" class="col-xs-12 content-text">
+                <h5 ng-if="!nv.isEdit">{{nv.note.text}}</h5>
+                <textarea ng-if="nv.isEdit" rows="6"  ng-model="nv.note.text"></textarea>
+            </div>
+        </div>
+
+        <div ng-if="nv.isEdit" class="label">
+            <div>
+                <select ng-model="selectLabel" ng-click="nv.addItem('labels', selectLabel)">
+                    <option value="" disabled>Select label</option>
+                    <option ng-repeat="label in nv.data.labels">
+                        {{label}}
+                    </option>
+                </select>
+            </div>
+            <div class="row edit-labels">
+                <div class="text-center col-xs-12 col-sm-4 col-md-3" ng-repeat="item in nv.note.labels track by $index">
+                    <span ng-bind="item"></span>
+                    <i class="glyphicon glyphicon-remove pull-right" ng-click="nv.remove('labels', item)"></i>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="nv.isEdit" class="edit-category">
+            <select ng-model="selectCategoryParent" ng-click="nv.addItem('parent_category', selectCategoryParent)">
+                <option value="" disabled>Select parent category</option>
+                <option ng-repeat="category in nv.data.categories">
+                    {{category.category_parent.name}}
+                </option>
+            </select>
+            <div ng-if="nv.note.categories.name" class="row name-parent-category">
+                <span ng-bind="nv.note.categories.name"></span>
+                <i class="glyphicon glyphicon-remove pull-right" ng-click="nv.remove('parent_category', nv.note.categories.name)"></i>
+            </div>
+
+            <select ng-if="nv.note.categories.name" ng-model="selectCategory" ng-click="nv.addItem('category', selectCategory)">
+                <option value="" disabled>Select category</option>
+                <option ng-repeat="category in nv.getSubcategory()">
+                    {{category}}
+                </option>
+            </select>
+            <div class="row">
+                <div class="list-category col-xs-12 col-sm-4 col-md-3" ng-repeat="item in nv.note.categories.category track by $index">
+                    <span ng-bind="item"></span>
+                    <i class="glyphicon glyphicon-remove pull-right" ng-click="nv.remove('category', item)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-edit">
+        <button ng-click="nv.isEdit = !nv.isEdit">Edit</button>
+        <button ng-click="nv.updateNote()">Update</button>
+        <button ui-sref="note">Close</button>
+    </div>
+</div>
+
